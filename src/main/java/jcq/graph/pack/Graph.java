@@ -11,28 +11,34 @@ import java.util.ArrayList;
  *
  * @author celine
  */
-public class DiGraph extends Graph {
+public class Graph extends AbstractGraph {
 
-    protected ArrayList<DiArete> aretes;
+    protected ArrayList<Arete> aretes;
 
-    public DiGraph(int taille) {
+    public Graph(int taille) {
         super(taille);
         aretes = new ArrayList<>();
     }
     
-    public void makeArete(Integer id_src, Integer id_dest, Integer poids) {
-        aretes.add(new DiArete(noeuds.get(id_src),noeuds.get(id_dest),poids));
+    public void makeArete(Integer id_src, Integer id_dest) {
+        aretes.add(new Arete(noeuds.get(id_src),noeuds.get(id_dest)));
+    }
+
+    /**
+     * @return the aretes
+     */
+    public ArrayList<Arete> getAretes() {
+        return aretes;
     }
 
     @Override
     public String toString() {
-        String retour = "Digraph {\n";
+        String retour = "Graph {\n";
         retour += listeDeNoeuds();
-        for (DiArete arete : aretes) {
+        for (Arete arete : aretes) {
             retour += arete.toString() + "\n";
         }
         retour += "}";
         return retour;
     }
-
 }

@@ -9,43 +9,13 @@ package jcq.graph.pack;
  *
  * @author celine
  */
-public class DiArete {
+public class DiArete extends Arete {
     
-    private Noeud src;
-    private Noeud dest;
     private Integer poids;
 
     public DiArete(Noeud _src, Noeud _dest, Integer _poids) {
-        src = _src;
-        dest = _dest;
+        super(_src,_dest);
         poids = _poids;
-    }
-    /**
-     * @return the src
-     */
-    public Noeud getSrc() {
-        return src;
-    }
-
-    /**
-     * @param src the src to set
-     */
-    public void setSrc(Noeud src) {
-        this.src = src;
-    }
-
-    /**
-     * @return the dest
-     */
-    public Noeud getDest() {
-        return dest;
-    }
-
-    /**
-     * @param dest the dest to set
-     */
-    public void setDest(Noeud dest) {
-        this.dest = dest;
     }
 
     /**

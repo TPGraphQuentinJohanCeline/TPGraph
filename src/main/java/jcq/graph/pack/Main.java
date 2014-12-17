@@ -13,14 +13,24 @@ public class Main {
     
     public static void main(String args[]) {
         
-        DiGraph g = new DiGraph(5);
-        g.makeArete(0, 2, 2);
-        g.makeArete(1, 0, 2);
-        g.makeArete(2, 1, 1);
-        g.makeArete(1, 4, 1);
-        g.makeArete(3, 1, 2);
-        g.makeArete(4, 3, 1);
-        g.makeArete(2, 3, 1);
+        DiGraph dg = new DiGraph(5);
+        dg.makeArete(0, 2, 2);
+        dg.makeArete(1, 0, 2);
+        dg.makeArete(2, 1, 1);
+        dg.makeArete(1, 4, 1);
+        dg.makeArete(3, 1, 2);
+        dg.makeArete(4, 3, 1);
+        dg.makeArete(2, 3, 1);
+        System.out.println(dg.toString());
+        
+        Graph g = new Graph(5);
+        g.makeArete(0, 2);
+        g.makeArete(1, 0);
+        g.makeArete(2, 1);
+        g.makeArete(1, 4);
+        g.makeArete(3, 1);
+        g.makeArete(4, 3);
+        g.makeArete(2, 3);
         System.out.println(g.toString());
         
     }
