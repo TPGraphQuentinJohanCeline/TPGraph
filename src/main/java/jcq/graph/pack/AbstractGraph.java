@@ -12,9 +12,10 @@ import java.util.ArrayList;
  * @author celine
  */
 public abstract class AbstractGraph {
-        protected ArrayList<Noeud> noeuds;
 
-      public AbstractGraph(int taille) {
+    protected ArrayList<Noeud> noeuds;
+
+    public AbstractGraph(int taille) {
         noeuds = new ArrayList<>();
         for (int i = 0; i < taille; i++) {
             noeuds.add(new Noeud(i));
@@ -27,7 +28,10 @@ public abstract class AbstractGraph {
     public ArrayList<Noeud> getNoeuds() {
         return noeuds;
     }
-
+    
+    public Integer nbNoeuds() {
+        return noeuds.size();
+    }
 
     public String listeDeNoeuds() {
         String retour = "";
@@ -36,5 +40,5 @@ public abstract class AbstractGraph {
         }
         retour += "\n";
         return retour;
-    }  
+    }
 }
