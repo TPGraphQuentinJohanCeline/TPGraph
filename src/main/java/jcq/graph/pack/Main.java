@@ -38,14 +38,23 @@ public class Main {
         System.out.println(g.toString());
 
         try {
-            GraphReader reader = new GraphReader();
-            Graph glu = (Graph) reader.lire();
+            GraphReader greader = new GraphReader("/home/celine/Documents/graphs/inGraph.txt");
+            Graph glu = (Graph) greader.lire();
             System.out.println(glu.toString());
 
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        try {
+            GraphReader dgreader = new GraphReader("/home/celine/Documents/graphs/inDigraph.txt");
+            DiGraph dglu = (DiGraph) dgreader.lire();
+            System.out.println(dglu.toString());
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
 }

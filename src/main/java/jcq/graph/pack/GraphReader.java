@@ -20,12 +20,14 @@ public class GraphReader {
     Scanner scanner;
     Integer premier;
 
-    public GraphReader() throws FileNotFoundException {
-        this.filePath = "/home/celine/Documents/graphs/in.txt";
+    public GraphReader(String _filePath) throws FileNotFoundException {
+        filePath = _filePath;
         this.scanner = new Scanner(new File(filePath));
+
     }
 
     public AbstractGraph lire() {
+
         String line = scanner.nextLine();
         line = line.trim();
         switch (line) {
@@ -45,7 +47,7 @@ public class GraphReader {
         String[] noeuds = line.split(" ");
 
         premier = Integer.parseInt(noeuds[0]);
-        
+
         Integer nbNoeuds
                 = Integer.parseInt(noeuds[noeuds.length - 1])
                 - Integer.parseInt(noeuds[0])
@@ -68,7 +70,16 @@ public class GraphReader {
     }
 
     private DiGraph lireDiGraph() {
-        return new DiGraph(lireNbNoeuds());
+        Integer nbNoeuds = lireNbNoeuds();
+        DiGraph g = new DiGraph(nbNoeuds);
+        String line = scanner.nextLine().trim();
+        while (!line.equals("}")) {
+            String[] ar = line.split("->");
+            g.makeArete(Integer.parseInt(ar[0]) - premier, Integer.parseInt(ar[1]) - premier, 1);
+            line = scanner.nextLine().trim();
+        }
+        scanner.close();
+        return g;
     }
 
 }
