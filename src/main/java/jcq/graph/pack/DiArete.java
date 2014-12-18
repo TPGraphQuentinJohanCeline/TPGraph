@@ -18,6 +18,10 @@ public class DiArete extends Arete {
         poids = _poids;
     }
 
+    public void plusplus() {
+        poids++;
+    }
+    
     /**
      * @return the poids
      */
