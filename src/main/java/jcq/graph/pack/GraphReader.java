@@ -75,7 +75,7 @@ public class GraphReader {
         String line = scanner.nextLine().trim();
         while (!line.equals("}")) {
             String[] ar = line.split("->");
-            g.makeArete(Integer.parseInt(ar[0]) - premier, Integer.parseInt(ar[1]) - premier, 1);
+            g.makeArete(Integer.parseInt(ar[0]) - premier, Integer.parseInt(ar[1]) - premier, 0);
             line = scanner.nextLine().trim();
         }
         scanner.close();

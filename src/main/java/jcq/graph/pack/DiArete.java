@@ -22,6 +22,11 @@ public class DiArete extends Arete {
         poids++;
     }
     
+    public boolean equals(DiArete a) {
+        return (a.getSrc().getId() == src.getId() 
+                && a.getDest().getId() == dest.getId());
+    }
+    
     /**
      * @return the poids
      */

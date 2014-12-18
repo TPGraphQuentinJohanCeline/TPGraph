@@ -6,6 +6,7 @@
 package jcq.graph.pack;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 /**
  *
@@ -25,8 +26,25 @@ public class DiGraph extends AbstractGraph {
         aretes = new ArrayList<>();
     }
     
+    public ArrayList<DiArete> getAretes() {
+        return aretes;
+    }
+    
     public void makeArete(Integer id_src, Integer id_dest, Integer poids) {
         aretes.add(new DiArete(noeuds.get(id_src),noeuds.get(id_dest),poids));
+    }
+    
+    public DiArete findArete(DiArete _a) {
+        for (DiArete a : aretes) {
+            if (a.equals(_a)) {
+                return a;
+            }
+        }
+        return null;
+    }
+    
+    public void deleteArete(DiArete a) {
+        aretes.remove(a);
     }
     
     //Dès qu'on en a besoin, on range les arêtes par sommet une fois pour toute
@@ -48,33 +66,41 @@ public class DiGraph extends AbstractGraph {
         //Si on retombe ne serait-ce qu'une fois sur un
         //noeud déjà vu, c'est qu'il y a un cycle.
     
-    public boolean possedeUnCycles() {
+    public boolean possedeUnCycle() {
         voisins();
-        boolean vu[] = new boolean[nbNoeuds()];
-        for (int i = 0; i < nbNoeuds(); i++) { vu[i] = false; }
+        int d[] = new int[nbNoeuds()];
+        for (int i = 0; i < nbNoeuds(); i++) { d[i] = 0; }
+        Stack<Noeud> atraiter = new Stack<>();
+        int nbsommets = 0;
         
-        boolean possedeUnCycle = false;
-                    
-        int premierNonVu = premierNonVu(vu);
-        while (premierNonVu(vu) != -1) {
-            vu[premierNonVu] = true;
-            if ( possedeUnCycleRec(noeuds.get(premierNonVu), vu) ) 
-                return true;
+        for (DiArete a : aretes) {
+            d[a.getDest().getId()]++;
         }
         
-        return false;
+        for (Noeud n : noeuds) {
+            if (d[n.getId()] == 0) {
+                atraiter.push(n);
+                nbsommets++;
+            }
+        }
+        
+        while (!atraiter.isEmpty()) {
+            Noeud n = atraiter.pop();
+            for (DiArete a : aretesDe.get(n.getId())) {
+                d[a.getDest().getId()]--;
+                if (d[a.getDest().getId()] == 0) {
+                    atraiter.push(a.getDest());
+                    nbsommets++;
+                }
+            }
+        }
+        
+        return (nbsommets != nbNoeuds());
+        
+        
     }
     
-    public boolean possedeUnCycleRec(Noeud n, boolean[] vu) {
-        for (DiArete a : aretesDe.get(n.getId())) {
-            if (!vu[a.getDest().getId()]) {
-                vu[a.getDest().getId()] = true;
-                return possedeUnCycleRec(a.getDest(),vu);
-            }
-            return true;
-        }
-        return false;
-    }
+   
     
     //Pour récupérer tous les cycles
         //On effectue là encore un parcours en profondeur
@@ -83,6 +109,7 @@ public class DiGraph extends AbstractGraph {
         //où on revient sur un noeud déjà vu.
     
     public void trouverTousLesCycles() {
+        
         voisins();
         boolean vu[] = new boolean[nbNoeuds()];
         for (int i = 0; i < nbNoeuds(); i++) { vu[i] = false; }
@@ -130,7 +157,7 @@ public class DiGraph extends AbstractGraph {
                 
                 //On extrait le cycle du chemin
                 cycleCourant.extraire();
-                
+                System.out.println(cycleCourant);
                 cycles.add(cycleCourant);
             }
         }

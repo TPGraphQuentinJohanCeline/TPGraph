@@ -43,7 +43,7 @@ public class Cycle {
             if (vu[a.getSrc().getId()]) return a.getSrc().getId();
         }
         
-        for (int i = 0; i < nbNoeuds; i++) { System.out.print(" " + vu[i] + " "); }
+        //for (int i = 0; i < nbNoeuds; i++) { System.out.print(" " + vu[i] + " "); }
         return -1;
         
     }
