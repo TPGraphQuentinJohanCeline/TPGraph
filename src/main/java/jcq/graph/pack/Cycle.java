@@ -16,16 +16,19 @@ public class Cycle {
 
     private final ArrayList<DiArete> aretes;
     private final Integer nbNoeuds;
+    private boolean supprime;
 
     public Cycle(Integer _nbNoeuds) {
         aretes = new ArrayList<>();
         nbNoeuds = _nbNoeuds;
+        supprime = false;
     }
     
     public Cycle(Cycle _cycle, DiArete a, Integer _nbNoeuds) {
         this(_nbNoeuds);
+        supprime = _cycle.supprime;
         aretes.addAll(_cycle.getAretes());
-        aretes.add(a);
+        ajouterArete(a);
     }
     
     private Integer trouverRacine() {
@@ -66,6 +69,14 @@ public class Cycle {
         for(DiArete a : listToRemove) {
             aretes.remove(a);
         }
+
+        finaliser();
+    }
+
+    public void finaliser(){
+        for(DiArete a : aretes){
+            a.addCycle(this);
+        }
     }
     
     /**
@@ -75,7 +86,7 @@ public class Cycle {
         return aretes;
     }
     
-    public void ajoutArete(DiArete newArete) {
+    public void ajouterArete(DiArete newArete) {
         aretes.add(newArete);
     }
     
@@ -89,4 +100,11 @@ public class Cycle {
         return retour;
     }
 
+    public boolean isSupprime() {
+        return supprime;
+    }
+
+    public void setSupprime(boolean _supprime){
+        this.supprime = _supprime;
+    }
 }

@@ -99,7 +99,15 @@ public class DiGraph extends AbstractGraph {
         
         
     }
-    
+
+    // Parcourt le tableau des cycles et regarde s'il existe encore un cycle
+    // plus rapide pour le solver que possedeUnCycle()
+    public boolean possedeEncoreCycle(){
+        for(Cycle c : cycles){
+            if(!c.isSupprime()) return true;
+        }
+        return false;
+    }
    
     
     //Pour récupérer tous les cycles
@@ -147,18 +155,7 @@ public class DiGraph extends AbstractGraph {
                 trouverTousLesCyclesRec(a.getDest(),vu,cycleCourant,explore);
             }
             else {
-                //On se souvient du chemin qui permet de revenir en arrière
-                //suiteAretes[n.getId()] = a;
-
                 Cycle cycleCourant = new Cycle(cycle, a, nbNoeuds());
-
-                //On revient en arrière pour terminer le cycle.
-                //DiArete retour = suiteAretes[a.getDest().getId()];
-
-                /*while (retour != null) {
-                    cycleCourant.ajoutArete(retour);
-                    retour = suiteAretes[retour.getDest().getId()];
-                }*/
 
                 //On extrait le cycle du chemin
                 cycleCourant.extraire();
@@ -167,6 +164,29 @@ public class DiGraph extends AbstractGraph {
             }
         }
         explore[n.getId()] = false;
+    }
+
+    /*public void pondererAretes(){
+        for(Cycle c : cycles){
+            for(DiArete a : c.getAretes()){
+                a.plusplus();
+            }
+        }
+    }*/
+
+    public DiArete getAreteDePlusHautPoids(){
+        if(aretes.size() > 0) {
+            DiArete areteMax = aretes.get(0);
+            for (DiArete arete : aretes) {
+                if (!arete.isSupprime() && arete.getPoids() > areteMax.getPoids()) {
+                    areteMax = arete;
+                }
+            }
+            if(areteMax.isSupprime() || areteMax.getPoids() <= 0) return null;
+
+            return areteMax;
+        }
+        return null;
     }
     
     

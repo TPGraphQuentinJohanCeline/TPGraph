@@ -19,7 +19,7 @@ public class Main {
 
     public static void main(String args[]) {
 
-        DiGraph dg = new DiGraph(8);
+        /*DiGraph dg = new DiGraph(8);
         dg.makeArete(0, 2, 0);
         dg.makeArete(1, 0, 0);
         dg.makeArete(2, 1, 0);
@@ -29,10 +29,9 @@ public class Main {
         dg.makeArete(2, 3, 0);
         dg.makeArete(0, 5, 0);
         dg.makeArete(5, 6, 0);
-        dg.makeArete(3, 7, 0);
-        System.out.println(dg.toString());
+        dg.makeArete(3, 7, 0);*/
 
-        /*DiGraph dg = new DiGraph(10);
+        DiGraph dg = new DiGraph(10);
         dg.makeArete(1,2,0);
         dg.makeArete(2,3,0);
         dg.makeArete(3,1,0);
@@ -45,7 +44,7 @@ public class Main {
         dg.makeArete(5, 6, 0);
         dg.makeArete(6,7,0);
         dg.makeArete(7,5,0);
-        System.out.println(dg.toString());*/
+        System.out.println(dg.toString());
 
 
        /*Graph g = new Graph(5);
@@ -75,11 +74,9 @@ public class Main {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }*/
-        
-        
-        dg.trouverTousLesCycles();
-        System.out.println(dg);
-        
+
+        System.out.println(Solver.minCoupeCircuit(3, dg));
+
         
     }
 
