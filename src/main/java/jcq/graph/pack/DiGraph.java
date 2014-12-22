@@ -109,22 +109,24 @@ public class DiGraph extends AbstractGraph {
         //où on revient sur un noeud déjà vu.
     
     public void trouverTousLesCycles() {
-        
+
         voisins();
         boolean vu[] = new boolean[nbNoeuds()];
-        for (int i = 0; i < nbNoeuds(); i++) { vu[i] = false; }
+        boolean explore[] = new boolean[nbNoeuds()];
+        for (int i = 0; i < nbNoeuds(); i++) { vu[i] = false; explore[i] = false; }
 
-        //Pour mémoriser comment revenir au sommet initial d'un cycle
-        DiArete suiteAretes[] = new DiArete[nbNoeuds()];
+        /*Pour mémoriser comment revenir au sommet initial d'un cycle
+        DiArete suiteAretes[] = new DiArete[nbNoeuds()];*/
         //Pour mémoriser tous les cycles trouvés
         cycles = new ArrayList<>();
 
         int premierNonVu = premierNonVu(vu);
-        while (premierNonVu(vu) != -1) {
+        while (premierNonVu != -1) {
             vu[premierNonVu] = true;
             //cycle à mémoriser.
             Cycle cycle = new Cycle(nbNoeuds());
-            trouverTousLesCyclesRec(noeuds.get(premierNonVu),vu, cycle, suiteAretes);
+            trouverTousLesCyclesRec(noeuds.get(premierNonVu),vu, cycle, explore);
+            premierNonVu = premierNonVu(vu);
         }
         
     }
@@ -133,35 +135,38 @@ public class DiGraph extends AbstractGraph {
             Noeud n,
             boolean[] vu, 
             Cycle cycle, 
-            DiArete[] suiteAretes) {
-        
+            boolean[] explore) {
+
+        vu[n.getId()] = true;
+        explore[n.getId()] = true;
+
         for (DiArete a : aretesDe.get(n.getId())) {
-            if (!vu[a.getDest().getId()]) {
-                vu[a.getDest().getId()] = true;
+            if (!explore[a.getDest().getId()]) {
                 //On mémorise le chemin actuel et on continue
                 Cycle cycleCourant = new Cycle(cycle, a, nbNoeuds());
-                trouverTousLesCyclesRec(a.getDest(),vu,cycleCourant,suiteAretes);
+                trouverTousLesCyclesRec(a.getDest(),vu,cycleCourant,explore);
             }
             else {
                 //On se souvient du chemin qui permet de revenir en arrière
-                suiteAretes[n.getId()] = a;
-                
+                //suiteAretes[n.getId()] = a;
+
                 Cycle cycleCourant = new Cycle(cycle, a, nbNoeuds());
-                
+
                 //On revient en arrière pour terminer le cycle.
-                DiArete retour = suiteAretes[a.getDest().getId()];
-                while (retour != null) {
+                //DiArete retour = suiteAretes[a.getDest().getId()];
+
+                /*while (retour != null) {
                     cycleCourant.ajoutArete(retour);
                     retour = suiteAretes[retour.getDest().getId()];
-                }
-                
+                }*/
+
                 //On extrait le cycle du chemin
                 cycleCourant.extraire();
-                System.out.println(cycleCourant);
+                System.out.println("Cycle trouvé : " + cycleCourant);
                 cycles.add(cycleCourant);
             }
         }
-        
+        explore[n.getId()] = false;
     }
     
     
