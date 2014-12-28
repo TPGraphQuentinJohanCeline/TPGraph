@@ -1,23 +1,49 @@
+------------------------------------------------------------------------------------------------------
 Pour compiler :
+------------------------------------------------------------------------------------------------------
 Placez vous à la racine du dossier fourni et entrez :
 
 mkdir bin
 javac -d bin src/*.java
 
+------------------------------------------------------------------------------------------------------
+Pour exécuter le script de test :
+------------------------------------------------------------------------------------------------------
+Après avoir compilé, placez vous à la racine du dossier fourni et entrez au choix :
+bash test_TP.sh
+bash test_TP2.sh
+bash test_TP3.sh
+bash test_TP4.sh
 
+------------------------------------------------------------------------------------------------------
 Pour exécuter les trois programmes :
-java jcq.graph.pack.Reducteur 
-java jcq.graph.pack.Verificateur 
-java jcq.graph.pack.Solver 
-
-Toutes les exécutions possibles :
-cd bin puis au choix :
+------------------------------------------------------------------------------------------------------
+Après avoir compilé, placez vous à la racine du dossier fourni et entrez :
+cd bin 
+puis au choix :
 
 cat ../instances/VraiInstanceCA5 | java jcq.graph.pack.Reducteur > ../instances/VraiInstanceMin5
+cat ../instances/VraiInstanceCA8 | java jcq.graph.pack.Reducteur > ../instances/VraiInstanceMin8
+cat ../instances/VraiInstanceCA10 | java jcq.graph.pack.Reducteur > ../instances/VraiInstanceMin10
+cat ../instances/VraiInstanceCA15 | java jcq.graph.pack.Reducteur > ../instances/VraiInstanceMin15
+cat ../instances/FauxInstanceCA8 | java jcq.graph.pack.Reducteur > ../instances/FauxInstanceMin8
+cat ../instances/FauxInstanceCA10 | java jcq.graph.pack.Reducteur > ../instances/FauxInstanceMin10
+cat ../instances/FauxInstanceCA12 | java jcq.graph.pack.Reducteur > ../instances/FauxInstanceMin12
 
 
 cat ../instances/VraiInstanceMin5 | cat ../instances/VraiCertificatMin5 | java jcq.graph.pack.Verificateur
-
+cat ../instances/VraiInstanceMin8 | cat ../instances/VraiCertificatMin8 | java jcq.graph.pack.Verificateur
+cat ../instances/VraiInstanceMin10 | cat ../instances/VraiCertificatMin10 | java jcq.graph.pack.Verificateur
+cat ../instances/VraiInstanceMin15 | cat ../instances/VraiCertificatMin15 | java jcq.graph.pack.Verificateur
+cat ../instances/FauxInstanceMin8 | cat ../instances/VraiCertificatMin5 | java jcq.graph.pack.Verificateur
+cat ../instances/FauxInstanceMin10 | cat ../instances/VraiCertificatMin5 | java jcq.graph.pack.Verificateur
+cat ../instances/FauxInstanceMin12 | cat ../instances/VraiCertificatMin5 | java jcq.graph.pack.Verificateur
 
 
 cat ../instances/VraiInstanceMin5 | java jcq.graph.pack.Solver
+cat ../instances/VraiInstanceMin8 | java jcq.graph.pack.Solver
+cat ../instances/VraiInstanceMin10 | java jcq.graph.pack.Solver
+cat ../instances/VraiInstanceMin15 | java jcq.graph.pack.Solver
+cat ../instances/FauxInstanceMin8 | java jcq.graph.pack.Solver
+cat ../instances/FauxInstanceMin10 | java jcq.graph.pack.Solver
+cat ../instances/FauxInstanceMin12 | java jcq.graph.pack.Solver
