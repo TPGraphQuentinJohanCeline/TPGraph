@@ -18,11 +18,11 @@ public class Verificateur {
     public static void main(String args[]) {
         
         try {
-            GraphReader greader = new GraphReader("/home/celine/Documents/graphs/VraiInstanceMin15");
+            GraphReader greader = new GraphReader("/home/celine/Documents/ProjetsComplets/TPGraph/src/main/resources/VraiInstanceMin15");
             DiGraph instanceP = (DiGraph) greader.lire();
             System.out.println(instanceP);
             
-            greader = new GraphReader("/home/celine/Documents/graphs/VraiCertificatMin15");
+            greader = new GraphReader("/home/celine/Documents/ProjetsComplets/TPGraph/src/main/resources/VraiCertificatMin15");
             DiGraph certificat = (DiGraph) greader.lire();
             
             for (DiArete a : certificat.getAretes()) {
@@ -30,7 +30,7 @@ public class Verificateur {
             }
             
             System.out.println(instanceP);
-            //instanceP.trouverTousLesCycles();
+            instanceP.trouverTousLesCycles();
             System.out.println(instanceP.possedeUnCycle());
             
         } catch (FileNotFoundException ex) {
