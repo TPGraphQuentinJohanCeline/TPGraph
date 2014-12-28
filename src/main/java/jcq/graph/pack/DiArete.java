@@ -1,15 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package jcq.graph.pack;
 
 import java.util.ArrayList;
 
 /**
+ * DiArete
  *
- * @author celine
+ * @see Arete
+ * Représente une arete d'un graph orienté
+ * En plus de stoquer le noeud source et le noeud destination,
+ * on stoque les cycles trouvés pour cette arête afin de l'utiliser
+ * dans le solver.
+ *
+ * @author Quentin Choullet
+ * @author Céline de Roland
+ * @author Johan Ravery
  */
 public class DiArete extends Arete {
     

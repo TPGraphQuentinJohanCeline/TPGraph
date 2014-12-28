@@ -1,41 +1,37 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package jcq.graph.pack;
 
-import java.io.FileNotFoundException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
- *
- * @author celine
+ * Vérificateur
+ * 
+ * Lit une instance de MinCoupeCircuit sur l'entrée standard
+ * Lit un certificat sur l'entrée standard
+ * @see GraphReader
+ * 
+ * Enlève de l'instance de MinCoupeCircuit les aretes du certificat
+ * Vérifie que le nouveau graphe formé ne possède pas de cycle
+ * @see DiGraph.possedeUnCycle()
+ * 
+ * Retourne 0 si l'instance de MinCoupeCircuit était vraie, 1 sinon
+ * 
+ * @author Quentin Choullet
+ * @author Céline de Roland
+ * @author Johan Ravery
  */
 public class Verificateur {
     
     public static void main(String args[]) {
         
-        try {
-            GraphReader greader = new GraphReader("/home/celine/Documents/ProjetsComplets/TPGraph/src/main/resources/VraiInstanceMin15");
+            GraphReader greader = new GraphReader();
             DiGraph instanceP = (DiGraph) greader.lire();
-            System.out.println(instanceP);
-            
-            greader = new GraphReader("/home/celine/Documents/ProjetsComplets/TPGraph/src/main/resources/VraiCertificatMin15");
             DiGraph certificat = (DiGraph) greader.lire();
             
             for (DiArete a : certificat.getAretes()) {
                 instanceP.deleteArete(instanceP.findArete(a));
             }
             
-            System.out.println(instanceP);
-            instanceP.trouverTousLesCycles();
-            System.out.println(instanceP.possedeUnCycle());
+            boolean resteDesCycles = instanceP.possedeUnCycle();
+            if (resteDesCycles) { System.exit(1); }
+            else { System.exit(0); }
             
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Verificateur.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
     }
 }

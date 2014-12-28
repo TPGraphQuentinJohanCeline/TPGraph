@@ -1,33 +1,33 @@
 package jcq.graph.pack;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
- *
+ * Solver
+ * 
+ * Lit une instance de MinCoupeCircuit sur l'entrée standard
+ * @see GraphReader
+ * 
+ * Vérifie si l'instance est vraie ou fausse
+ * @see DiGraph.trouverTousLesCycles
+ * 
+ * Renvoie 0 si elle est vraie,
+ * 1 sinon
+ * 
+ * @author Quentin Choullet
+ * @author Céline de Roland
+ * @author Johan Ravery
  */
 public class Solver {
 
     public static void main(String args[]) {
 
-        try {
-            GraphReader greader = new GraphReader("/home/celine/Documents/graphs/FauxInstanceMin12");
+            GraphReader greader = new GraphReader();
             DiGraph instanceP = (DiGraph) greader.lire();
             System.out.println(instanceP);
 
             int mcc = minCoupeCircuit(instanceP.getValeurATester(), instanceP);
-            if (mcc == 0) {
-                System.out.println("vrai");
-            }
-            else if (mcc == 1) {
-                System.out.println("faux");
-            }
-
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Verificateur.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            System.exit(mcc);
 
     }
 
@@ -91,40 +91,5 @@ public class Solver {
 
         return false;
 
-
-        /* il n'y a plus de cycles */
-        /*
-         if(aMax.getPoids() <= 0) return true;
-
-         //on "supprime" l'arête de plus haut poids
-         for(Cycle c : aMax.getCycles()){
-         if(!c.isSupprime()) {
-         c.setSupprime(true);
-         cyclesSupprimes.add(c);
-         for (DiArete a : c.getAretes()) {
-         a.moinsmoins();
-         }
-         }
-         }
-
-         if(!g.possedeEncoreCycle()){
-         return true;
-         }
-         else {
-         for (DiArete a : g.getAretes()) {
-         if (a.getPoids() > 0) {
-         if (minCoupeCircuitRec(k - 1, g)) return true;
-         }
-         }
-         // on annule tous les changements effectués
-         for(Cycle c : cyclesSupprimes){
-         c.setSupprime(false);
-         for(DiArete a : c.getAretes()){
-         a.plusplus();
-         }
-         }
-         return false;
-         }
-         */
     }
 }

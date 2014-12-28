@@ -1,16 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package jcq.graph.pack;
 
 import java.util.ArrayList;
 import java.util.Stack;
 
 /**
+ * DiGraph
  *
- * @author celine
+ * @see AbstractGraph
+ * Représente un graph orienté
+ * Méthodes importantes :
+ *  possedeUnCycle : algo polynomial permettant de savoir si le graph 
+ * possède ou non un cycle
+ *  rouverTousLesCycles : algo exponentiel permettant de trouver la liste de
+ * tous les cycles du graphe (utilisé ensuite par le solver)
+ *
+ * @author Quentin Choullet
+ * @author Céline de Roland
+ * @author Johan Ravery
  */
 public class DiGraph extends AbstractGraph {
 

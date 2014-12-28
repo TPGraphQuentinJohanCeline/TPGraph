@@ -1,13 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package jcq.graph.pack;
 
 /**
+ * Arete
  *
- * @author celine
+ * Représente une arete d'un graph (un couple noeud source, noeud dest)
+ *
+ * @author Quentin Choullet
+ * @author Céline de Roland
+ * @author Johan Ravery
  */
 public class Arete {
 

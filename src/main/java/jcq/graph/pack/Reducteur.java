@@ -1,26 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package jcq.graph.pack;
 
-import java.io.FileNotFoundException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
- *
- * @author celine
+ * Réducteur
+ * 
+ * Lit une instance de CouvertureDesAretes sur l'entrée standard
+ * @see GraphReader
+ * 
+ * Transforme cette instance en une instance de MinCoupeCircuit 
+ * ayant la même réponse
+ * Affiche l'instance obtenue dans la sortie standard
+ * 
+ * @author Quentin Choullet
+ * @author Céline de Roland
+ * @author Johan Ravery
  */
 public class Reducteur {
     
     public static void main(String args[]) {
         
-        try {
-            GraphReader greader = new GraphReader("/home/celine/Documents/graphs/VraiInstanceCA15");
+            GraphReader greader = new GraphReader();
             Graph instanceCA = (Graph) greader.lire();
-            System.out.println(instanceCA.toString());
             
             Integer nbNoeuds = instanceCA.nbNoeuds();
             
@@ -37,10 +36,6 @@ public class Reducteur {
             }
             
             System.out.println(instanceMin.toString());
-
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
         
         System.exit(0);
     }

@@ -1,15 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package jcq.graph.pack;
 
 import java.util.ArrayList;
 
 /**
+ * AbstractGraph
  *
- * @author celine
+ * Représente un graph orienté ou non
+ * Contient les éléments communs aux deux structures :
+ * La liste des noeuds, et le nombre max indiqué dans l'instance
+ * de CA ou de MinCoupeCircuit 
+ * (nombre de sommets à colorier, resp. arêtes à couper)
+ *
+ * @author Quentin Choullet
+ * @author Céline de Roland
+ * @author Johan Ravery
  */
 public abstract class AbstractGraph {
 

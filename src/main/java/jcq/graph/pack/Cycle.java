@@ -1,18 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package jcq.graph.pack;
 
 import java.util.ArrayList;
 import java.util.ListIterator;
 
 /**
+ * Cycle
  *
- * @author celine
+ * Représente un cycle
+ * Méthodes importantes :
+ *  possedeUnCycle : algo polynomial permettant de savoir si le graph 
+ * possède ou non un cycle
+ *  rouverTousLesCycles : algo exponentiel permettant de trouver la liste de
+ * tous les cycles du graphe (utilisé ensuite par le solver)
+ *
+ * @author Quentin Choullet
+ * @author Céline de Roland
+ * @author Johan Ravery
  */
-public class Cycle {
+public final class Cycle {
 
     private final ArrayList<DiArete> aretes;
     private final Integer nbNoeuds;
@@ -31,11 +36,17 @@ public class Cycle {
         ajouterArete(a);
     }
     
+    //Lors du parcours du digraph, on trouve des listes de sommets qui reviennent
+    //sur eux même :
+    //exemple : 1 -> 2 -> 5 -> 3 -> 4 -> 5
+    //à partir de cette liste, on doit identifier quel est le cycle : 5,3,4,5
+    //C'est le rôle des méthodes trouverRacine et extraire
+    
     private Integer trouverRacine() {
         boolean[] vu = new boolean[nbNoeuds];
         for (int i = 0; i < nbNoeuds; i++) { vu[i] = false; }
         
-        DiArete a = null;
+        DiArete a;
         ListIterator<DiArete> aIter = aretes.listIterator();
         while (aIter.hasNext()) {
             a = aIter.next();
@@ -46,7 +57,6 @@ public class Cycle {
             if (vu[a.getSrc().getId()]) return a.getSrc().getId();
         }
         
-        //for (int i = 0; i < nbNoeuds; i++) { System.out.print(" " + vu[i] + " "); }
         return -1;
         
     }
