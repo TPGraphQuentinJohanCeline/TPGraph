@@ -20,7 +20,6 @@ public class Reducteur {
         
             GraphReader greader = new GraphReader();
             Graph instanceCA = (Graph) greader.lire();
-						greader.close();
             
             Integer nbNoeuds = instanceCA.nbNoeuds();
             

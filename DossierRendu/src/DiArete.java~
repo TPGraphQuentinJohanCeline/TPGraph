@@ -59,7 +59,7 @@ public class DiArete extends Arete {
     
     @Override
     public String toString() {
-        return src.toString() + "->" + dest.toString();
+        return src.toString() + "->" + dest.toString() + " [label=\" " + poids.toString() + " \"] ";
     }
 
     public void moinsmoins() { poids--; }

@@ -129,6 +129,8 @@ public class DiGraph extends AbstractGraph {
         boolean explore[] = new boolean[nbNoeuds()];
         for (int i = 0; i < nbNoeuds(); i++) { vu[i] = false; explore[i] = false; }
 
+        /*Pour mémoriser comment revenir au sommet initial d'un cycle
+        DiArete suiteAretes[] = new DiArete[nbNoeuds()];*/
         //Pour mémoriser tous les cycles trouvés
         cycles = new ArrayList<>();
 
@@ -163,11 +165,20 @@ public class DiGraph extends AbstractGraph {
 
                 //On extrait le cycle du chemin
                 cycleCourant.extraire();
+                System.out.println("Cycle trouvé : " + cycleCourant);
                 cycles.add(cycleCourant);
             }
         }
         explore[n.getId()] = false;
     }
+
+    /*public void pondererAretes(){
+        for(Cycle c : cycles){
+            for(DiArete a : c.getAretes()){
+                a.plusplus();
+            }
+        }
+    }*/
 
     public DiArete getAreteDePlusHautPoids(){
         if(aretes.size() > 0) {

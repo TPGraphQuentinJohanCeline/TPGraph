@@ -37,8 +37,10 @@ public class GraphReader {
 				}
         switch (line) {
             case "Graph {":
+								System.out.println("lire Graph");
                 return lireGraph();
             case "Digraph {":
+								System.out.println("lire DiGraph");
                 return lireDiGraph();
             default:
 								System.err.println("encodage invalide");

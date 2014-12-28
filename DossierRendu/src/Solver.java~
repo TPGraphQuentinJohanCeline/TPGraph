@@ -24,7 +24,7 @@ public class Solver {
 
             GraphReader greader = new GraphReader();
             DiGraph instanceP = (DiGraph) greader.lire();
-						greader.close();
+            System.out.println(instanceP);
 
             int mcc = minCoupeCircuit(instanceP.getValeurATester(), instanceP);
             System.exit(mcc);
