@@ -16,7 +16,6 @@ cd bin puis au choix :
 cat ../instances/VraiInstanceCA5 | java jcq.graph.pack.Reducteur > ../instances/VraiInstanceMin5
 
 
-
 cat ../instances/VraiInstanceMin5 | cat ../instances/VraiCertificatMin5 | java jcq.graph.pack.Verificateur
 
 

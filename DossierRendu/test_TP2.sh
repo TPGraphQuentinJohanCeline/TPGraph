@@ -36,16 +36,16 @@ SOLVER="java jcq.graph.pack.Solver"
 REDUCTEUR="java jcq.graph.pack.Reducteur"
 
 # P1 est le problème principal, celui dont veut montrer qu'il est NP-Complet
-INSTANCE_P1_VRAI="../instances/VraiInstanceMin5"
-INSTANCE_P1_FAUX="../instances/FauxInstanceMin8"
+INSTANCE_P1_VRAI="../instances/VraiInstanceMin8"
+INSTANCE_P1_FAUX="../instances/FauxInstanceMin10"
 
 # Certificats pour l'instance VRAI de P1
-CERTIF_VALIDE_POUR_INSTANCE_P1_VRAI="../instances/VraiCertificatMin5"
+CERTIF_VALIDE_POUR_INSTANCE_P1_VRAI="../instances/VraiCertificatMin8"
 
 # P2 est un problème qu'on sait être NP-Complet. Ces instances seront traitées
 # par le programme de réduction afin de produires des instance de P1.
-INSTANCE_P2_VRAI="../instances/VraiInstanceCA5"
-INSTANCE_P2_FAUX="../instances/FauxInstanceCA8"
+INSTANCE_P2_VRAI="../instances/VraiInstanceCA8"
+INSTANCE_P2_FAUX="../instances/FauxInstanceCA10"
 
 #
 #
