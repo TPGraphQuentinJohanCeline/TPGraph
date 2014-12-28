@@ -56,6 +56,12 @@ public class GraphReader {
         return nbNoeuds;
     }
 
+    private int lireEntier() {
+        String line = scanner.nextLine().trim();
+        int retour = scanner.nextInt();
+        return retour;
+    }
+    
     private Graph lireGraph() {
         Integer nbNoeuds = lireNbNoeuds();
         Graph g = new Graph(nbNoeuds);
@@ -65,6 +71,7 @@ public class GraphReader {
             g.makeArete(Integer.parseInt(ar[0]) - premier, Integer.parseInt(ar[1]) - premier);
             line = scanner.nextLine().trim();
         }
+        g.setValeurATester(lireEntier());
         scanner.close();
         return g;
     }
@@ -78,6 +85,7 @@ public class GraphReader {
             g.makeArete(Integer.parseInt(ar[0]) - premier, Integer.parseInt(ar[1]) - premier, 0);
             line = scanner.nextLine().trim();
         }
+        g.setValeurATester(lireEntier());
         scanner.close();
         return g;
     }

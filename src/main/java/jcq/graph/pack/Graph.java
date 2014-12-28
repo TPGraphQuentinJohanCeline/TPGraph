@@ -38,7 +38,8 @@ public class Graph extends AbstractGraph {
         for (Arete arete : aretes) {
             retour += arete.toString() + "\n";
         }
-        retour += "}";
+        retour += "}\n";
+        retour += entier();
         return retour;
     }
 }

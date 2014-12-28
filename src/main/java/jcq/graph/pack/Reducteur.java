@@ -18,13 +18,14 @@ public class Reducteur {
     public static void main(String args[]) {
         
         try {
-            GraphReader greader = new GraphReader("/home/celine/Documents/graphs/un_graph");
+            GraphReader greader = new GraphReader("/home/celine/Documents/graphs/VraiInstanceCA15");
             Graph instanceCA = (Graph) greader.lire();
             System.out.println(instanceCA.toString());
             
             Integer nbNoeuds = instanceCA.nbNoeuds();
             
             DiGraph instanceMin = new DiGraph(2*nbNoeuds);
+            instanceMin.setValeurATester(instanceCA.getValeurATester());
             
             for (int i = 0; i < nbNoeuds; i++) {
                 instanceMin.makeArete(2*i, 2*i+1, 0);

@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public abstract class AbstractGraph {
 
     protected ArrayList<Noeud> noeuds;
+    private int valeurATester;
 
     public AbstractGraph(int taille) {
         noeuds = new ArrayList<>();
@@ -40,5 +41,24 @@ public abstract class AbstractGraph {
         }
         retour += "\n";
         return retour;
+    }
+
+    public String entier() {
+        String retour = "Entier {\n" + valeurATester + "\n}";
+        return retour;
+    }
+    
+    /**
+     * @return the valeurATester
+     */
+    public int getValeurATester() {
+        return valeurATester;
+    }
+
+    /**
+     * @param valeurATester the valeurATester to set
+     */
+    public void setValeurATester(int valeurATester) {
+        this.valeurATester = valeurATester;
     }
 }

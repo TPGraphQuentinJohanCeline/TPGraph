@@ -180,7 +180,8 @@ public class DiGraph extends AbstractGraph {
         for (DiArete arete : aretes) {
             retour += arete.toString() + "\n";
         }
-        retour += "}";
+        retour += "}\n";
+        retour += entier();
         return retour;
     }
 
