@@ -68,6 +68,7 @@ public class DiGraph extends AbstractGraph {
     }
     
     //Pour vérifier s'il y a au moins un cycle dans le graphe :
+    
     public boolean possedeUnCycle() {
         voisins();
         int d[] = new int[nbNoeuds()];
