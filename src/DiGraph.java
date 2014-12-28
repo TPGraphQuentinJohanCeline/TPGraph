@@ -113,7 +113,7 @@ public class DiGraph extends AbstractGraph {
    
     
     //Pour récupérer tous les cycles
-        //On effectue là encore un parcours en profondeur
+        //On effectue un parcours en profondeur
         //On doit pendant le parcours mémoriser le chemin courant
         //afin d'en extraire ensuite un cycle dans le cas
         //où on revient sur un noeud déjà vu.
