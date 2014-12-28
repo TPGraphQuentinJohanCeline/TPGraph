@@ -1,0 +1,11 @@
+Pour compiler :
+Placez vous à la racine du dossier fourni et entrez :
+
+javac -d bin src/*.java
+
+
+Pour exécuter les trois programmes :
+java jcq.graph.pack.Reducteur 
+java jcq.graph.pack.Verificateur 
+java jcq.graph.pack.Solver 
+
